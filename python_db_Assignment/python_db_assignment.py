@@ -22,6 +22,7 @@ fileList = ('information.docx','Hello.txt','myImage.png', \
 conn = sqlite3.connect('db_python_assignment.db') # connects to dB
 
 for x in fileList:
+    #specifies that only files ending in .txt from fileList will be added to dB
     if x.endswith('.txt'):
         with conn:
             cur = conn.cursor()
