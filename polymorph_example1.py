@@ -9,7 +9,7 @@ class User:
         entry_name = input("Enter name here")
         entry_email = input("Enter email here")
         entry_password = input("Enter password here")
-        if (entry_email == self.email and entry_password == self.password):
+        if (entry_email == self.Email and entry_password == self.Password):
             print("Welcome to the forum, {}!".format(entry_name))
         else:
             print("Invalid credentials, please try again or contact support.")
@@ -25,8 +25,8 @@ class Normal_user(User):
     def getLoginInfo(self):
         entry_screen_name = input("Enter username here")
         entry_password = input("Enter password here")
-        if (entry_screen_name == self.screen_name and entry_password == self.password):
-            print("Welcome to the forum, {}!".format(screen_name))
+        if (entry_screen_name == self.screen_name and entry_password == self.Password):
+            print("Welcome to the forum, {}!".format(Normal_user.screen_name))
         else:
             print("Invalid credentials, please try again or contact us at help@forum.com.")
 
@@ -44,9 +44,19 @@ class Admin(User):
         entry_email = input("Enter email here")
         entry_pin = input("Enter PIN here")
         entry_password = input("Enter password here")
-        if (entry_email == self.email and entry_password == self.password and entry_pin == self.admin_pin):
-            print("Welcome back, admin {}!".format(admin_name))
+        if (entry_email == self.Email and entry_password == self.Password and entry_pin == self.admin_pin):
+            print("Welcome back, admin {}!".format(Admin.admin_name))
         else:
             print("Invalid credentials, please try again or contact support.")
+
+
+
+if __name__ == "__main__":
+
+    ad = Admin()
+    print(ad.getLoginInfo())
+
+    norm = Normal_user()
+    print(norm.getLoginInfo())
     
                   
