@@ -28,7 +28,7 @@ class Normal_user(User):
         if (entry_screen_name == self.screen_name and entry_password == self.password):
             print("Welcome to the forum, {}!".format(screen_name))
         else:
-            print("Invalid credentials, please try again or contact us at help@forum.com."
+            print("Invalid credentials, please try again or contact us at help@forum.com.")
 
     
 # another child class
@@ -44,7 +44,7 @@ class Admin(User):
         entry_email = input("Enter email here")
         entry_pin = input("Enter PIN here")
         entry_password = input("Enter password here")
-        if (entry_email == self.email and entry_password == self.password and entry_pin = self.admin_pin):
+        if (entry_email == self.email and entry_password == self.password and entry_pin == self.admin_pin):
             print("Welcome back, admin {}!".format(admin_name))
         else:
             print("Invalid credentials, please try again or contact support.")
