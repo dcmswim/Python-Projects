@@ -22,5 +22,5 @@ class Manager(Employee):
 class Driver(Employee):
     Pay_scale = 3
     Truck_ID = 9876
-    CDL_license = ABC
+    CDL_license = "ABC"
     fuel_allocation = 100.00
