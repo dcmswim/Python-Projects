@@ -1,38 +1,42 @@
-
+#imports needed modules
 from abc import ABC, abstractmethod
 
 #defines abstract class
 class Polygon(ABC):
+    def list_shape(self, shape):
+        print(shape)
+        
+        
     @abstractmethod
-    def num_sides(self):
+    def num_sides(self, shape):
         pass
 
 #defines child classes
 class Triangle(Polygon):
-    def num_sides(self):
-        print("Triangles have 3 sides")
+    def num_sides(self,shape):
+        print("This shape has 3 sides. It is a {}".format(shape))
 
 class Pentagon(Polygon):
-    def num_sides(self):
-        print("Pentagons have 5 sides")
+    def num_sides(self,shape):
+        print("This shape has 5 sides. It is a {}".format(shape))
 
 class Hexagon(Polygon):
-    def num_sides(self):
-        print("Hexagons have 6 sides")
+    def num_sides(self,shape):
+        print("This shape has 6 sides. It is a {}".format(shape))
 
 class Square(Polygon):
-    def num_sides(self):
-        print("Quadrilaterals have 4 sides")
+    def num_sides(self,shape):
+        print("This shape has 4 sides. It is a {}".format(shape))
 
 #creating objects 
 obj_tri = Triangle()
-obj_tri.num_sides()
+obj_tri.num_sides('triangle')
 
 obj_pent = Pentagon()
-obj_pent.num_sides()
+obj_pent.num_sides('pentagon')
 
 obj_hex = Hexagon()
-obj_hex.num_sides()
+obj_hex.num_sides('hexagon')
 
 obj_sq = Square()
-obj_sq.num_sides()
+obj_sq.num_sides('quadrilateral')
