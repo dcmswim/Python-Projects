@@ -11,9 +11,7 @@ destination = r'C:/Users/David/Desktop/python_exercises/file_transfer/Folder_B/'
 A_files = os.listdir(source)
 B_files = os.listdir(destination)
 
-#creates variable that keeps track of hours and minutes
-time_check = datetime.datetime.now()
-is_time = time_check.strftime("%H%M")
+
 
 #function that copies files from A to B
 def copy_files():
@@ -26,10 +24,17 @@ def check_files():
         copy_files()
 
 
-#when local time is midnight, check_files() will execute
-if is_time == "0000":
-    check_files()
 
+#Constantly checks current time as long as X is true
+X = True
+while X is True:
+    def get_time():
+        time_check = datetime.datetime.now()
+        #creates variable that keeps track of hours and minutes
+        is_time = time_check.strftime("%H%M")
+        #when local time is midnight, check_files() will execute
+        if is_time == "0000":
+            check_files()
 
 
 
