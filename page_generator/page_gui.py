@@ -13,7 +13,9 @@ class main_window(Frame):
         self.master.title("Page Generator")
         self.inputlabel = tk.Label(self, text = "Input body text:")
         self.inputlabel.grid(row = 0, column = 0, sticky = tk.W, padx = 10)
-        self.field1 = tk.Entry(self)
+
+        self.source = StringVar()
+        self.field1 = tk.Entry(self, textvariable = self.source)
         self.field1.grid(row = 0, column = 2, columnspan = 5, padx = 10)
 
         self.button1 = Button(self, text = "Close program")
