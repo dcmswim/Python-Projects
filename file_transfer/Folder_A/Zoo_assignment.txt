@@ -1,0 +1,118 @@
+Zoo Assignment 1 Code:
+
+/*select all info from habitat table*/
+
+USE db_zooTest2 
+GO
+
+SELECT * FROM tbl_habitat
+
+
+Zoo Assignment 2 Code: 
+
+/*Select species name from species table where species order is 3*/
+
+SELECT species_name FROM tbl_species WHERE species_order = 3
+
+
+Zoo Assignment 3 Code:
+
+/*Select nutrition_types from nutrition table where cost is less than or equal to $600*/
+
+SELECT nutrition_type FROM tbl_nutrition WHERE nutrition_cost <= 600
+
+
+Zoo Assignment 4 Code:
+
+/*Retrieve all species_names with the nutrition_id between 2202 and 2206*/
+
+SELECT species_name FROM tbl_species WHERE species_nutrition  < 2207 AND species_nutrition > 2201
+
+/*Could also use the “BETWEEN” keyword like this : */
+
+SELECT species_name FROM tbl_species WHERE species_nutrition BETWEEN 2202 AND 2206
+
+
+Zoo Assignment 5 Code:
+
+/* Retrieve all names within the species_name column using the alias "Species Name:" from the species table and their corresponding nutrition_type under the alias "Nutrition Type:" from the nutrition table */
+
+
+SELECT species_name AS 'Species Name:', species_nutrition AS 'Nutrition Type:' FROM tbl_species
+
+
+Zoo Assignment 6 Code:
+
+/*From the specialist table, retrieve the first name, last name and contact number for the people that provide care to penguins from the species table*/
+
+SELECT tbl_specialist.specialist_fname, tbl_specialist.specialist_lname, tbl_specialist.specialist_contact
+FROM tbl_specialist WHERE specialist_id = 1
+
+/*NOTE*: I don’t think this was the intended way for this to be done. Below is a new query that yields that same result but is probably the “right” way to do this. */
+
+
+SELECT tbl_specialist.specialist_fname, tbl_specialist.specialist_lname, tbl_specialist.specialist_contact
+FROM tbl_specialist
+INNER JOIN tbl_care ON tbl_specialist.specialist_id = tbl_care.care_specialist
+INNER JOIN tbl_species ON tbl_care.care_id = tbl_species.species_care
+WHERE species_name = 'penguin’
+
+
+
+Zoo Assignment 7 Code:
+
+CREATE DATABASE db_books
+
+USE db_books
+
+/*creates tables*/
+
+CREATE TABLE tbl_authors (
+	book_id INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	book_title VARCHAR(50) UNIQUE NOT NULL,
+	book_author VARCHAR(50) NOT NULL,
+	book_publisher VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE tbl_characters (
+	character_id INT PRIMARY KEY NOT NULL IDENTITY (1,1),
+	main_character VARCHAR(50) NOT NULL,
+	secondary_character VARCHAR(50),
+	book_name VARCHAR(50) UNIQUE NOT NULL,
+	book_id INT FOREIGN KEY REFERENCES tbl_authors(book_id)
+);
+
+/* used this to test to make sure tables were created successfully*/
+SELECT * FROM tbl_authors
+SELECT * FROM tbl_characters
+
+
+/*inserts data into tables defined earlier*/
+INSERT INTO tbl_authors
+	(book_title, book_author, book_publisher)
+	VALUES
+	('Harry Potter', 'J.K. Rowling', 'Bloomsbury Publishing'),
+	('Lord of the Rings', 'J.R.R. Tolkien', 'Allen & Unwin'),
+	('The Witcher','Andrzej Sapkowski','Hatchette Book Group'),
+	('The Hunger Games', 'Suzanne Collins','Scholastic Corporation'),
+	('Artemis Fowl', 'Eoin Colfer','Viking Press' )
+;
+
+INSERT INTO tbl_characters
+	(main_character, secondary_character, book_name, book_id)
+	VALUES
+	('Harry Potter', 'Ron Weasley', 'Harry Potter', 1),
+	('Frodo Baggins', 'Gandalf', 'Lord of the Rings', 2),
+	('Geralt', 'Yennefer', 'The Witcher', 3),
+	('Katniss Everdeen', 'Peeta Mellark', 'The Hunger Games', 4),
+	('Artemis Fowl', 'Domovoi Butler', 'Artemis Fowl', 5)
+;
+
+/*returns results where book_name column in tbl_characters matches book_title in tbl_authors*/
+SELECT * FROM tbl_characters, tbl_authors WHERE tbl_characters.book_name = tbl_authors.book_title;
+
+/*returns results where book_id in tbl_characters matches book_id in tbl_authors (designated book_id in tbl_characters as a foreign key that relates to primary key in tbl_authors)*/
+SELECT * FROM tbl_characters, tbl_authors WHERE tbl_characters.book_id = tbl_authors.book_id;
+
+/*returns results where book_name is the same as the name of the main_character*/
+SELECT * FROM tbl_characters WHERE book_name = main_character;

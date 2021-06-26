@@ -1,0 +1,7 @@
+Instance name: SQLEXPRESS
+
+SQL administrators: LAPTOP-DAVID\David
+
+Features installed: SQLENGINE
+
+Version 10.0.2000.5, RTM
