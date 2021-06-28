@@ -5,6 +5,7 @@ import ctypes
 import tkinter
 from tkinter.filedialog import askdirectory
 
+
 import transfer_gui
 
 
@@ -12,22 +13,24 @@ import transfer_gui
 
 #allows user to select a directory to pull files from
 #IN PROGRESS: need a way to store this directory for future use
-def select_input():
-    global source
+def select_input(self):
     source = askdirectory() + '\\'
-    return source 
+    self.fieldA.delete(0)
+    self.fieldA.insert(0, source) #need to get this value stored as variable?
+     
+    
 
 #allows user to select a directory to copy files to
 #IN PROGRESS: need a way to store this directory for future use
-def select_output():
-    global destination
+def select_output(self):
     destination = askdirectory() + '\\'
-    return destination
-
+    self.fieldB.delete(0)
+    self.fieldB.insert(0, destination) #need to get this value stored as variable?
+    
 
 
 #transfers files that were modified in last 24 hours
-def check_files():
+def check_files(self):
     #gets list of files in source directory
     fileList = os.listdir(source)
 
@@ -48,47 +51,8 @@ def check_files():
 
 
 
-""" blocking this chunk as a copy to keep for reference. Will delete if not
-needed once program is complete
-#set where source of files are
-source = r'C:/Users/David/Desktop/python_exercises/file_transfer/Folder_A/'
-
-#set destination path
-destination = r'C:/Users/David/Desktop/python_exercises/file_transfer/Folder_B/'
-
-A_files = os.listdir(source)
-B_files = os.listdir(destination)
-
-
-
-#creates variable that keeps track of hours and minutes
-time_check = datetime.datetime.now()
-is_time = time_check.strftime("%H%M")
-
-#function that copies files from A to B
-def copy_files():
-    for i in A_files:
-        shutil.copy(source+i, destination)
-    
-
-#checks if there are any files in dir A that aren't in dir B
-def check_files():
-    if A_files != B_files:
-        copy_files()   
-
-#when local time is midnight, check_files() will execute
-if is_time == "0000":
-    check_files()
-
-def check_filesA():
-    for f in A_files:
-        print(f)
-
-def check_filesB():
-    for f in B_files:
-        print(f)
-
-"""
+if __name__ == '__main__':
+    pass
 
 
 
