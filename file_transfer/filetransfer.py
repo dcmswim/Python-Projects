@@ -12,25 +12,25 @@ import transfer_gui
 
 
 #allows user to select a directory to pull files from
-#IN PROGRESS: need a way to store this directory for future use
 def select_input(self):
     source = askdirectory() + '\\'
     self.fieldA.delete(0)
-    self.fieldA.insert(0, source) #need to get this value stored as variable?
-     
+    self.fieldA.insert(0, source)      
     
 
 #allows user to select a directory to copy files to
-#IN PROGRESS: need a way to store this directory for future use
 def select_output(self):
     destination = askdirectory() + '\\'
     self.fieldB.delete(0)
-    self.fieldB.insert(0, destination) #need to get this value stored as variable?
+    self.fieldB.insert(0, destination) 
     
 
 
 #transfers files that were modified in last 24 hours
 def check_files(self):
+    source = self.fieldA.get() #gets input from fieldA
+    destination = self.fieldB.get() #gets input from fieldB
+    
     #gets list of files in source directory
     fileList = os.listdir(source)
 
