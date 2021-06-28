@@ -5,15 +5,26 @@ import ctypes
 import tkinter
 from tkinter.filedialog import askdirectory
 
+import transfer_gui
+
+
+
+
 #allows user to select a directory to pull files from
 #IN PROGRESS: need a way to store this directory for future use
 def select_input():
-    askdirectory()
+    global source
+    source = askdirectory() + '\\'
+    return source 
 
 #allows user to select a directory to copy files to
 #IN PROGRESS: need a way to store this directory for future use
 def select_output():
-    askdirectory()
+    global destination
+    destination = askdirectory() + '\\'
+    return destination
+
+
 
 #transfers files that were modified in last 24 hours
 def check_files():

@@ -22,7 +22,7 @@ class main_window(Frame):
         self.fieldB = tk.Entry(self) #this is where output dir will be specified
         self.fieldB.grid(row = 1, column = 1, columnspan = 5, padx = 10)
 
-        self.button1 = Button(self, text = "Manually transfer files", command = lambda:filetransfer.copy_files())
+        self.button1 = Button(self, text = "Manually transfer files", command = lambda:filetransfer.check_files())
         self.button1.grid(row = 6, column = 0, sticky = tk.W, padx = 10, pady = 10)
         
        
