@@ -39,7 +39,9 @@ def check_files():
         #gets mtime of the file in full path
         mtime = os.path.getmtime(fullPath)
         #converts mtime to datetime format
-        modtime = datetime.datetime.now() - datetime.timedelta(hours=24)
+        modtime = datetime.datetime.fromtimestamp(mtime)
+        #creates a variable that holds the time from 24 hrs ago
+        twentyfour = datetime.datetime.now() - datetime.timedelta(hours=24)
         #if mod time was sooner than 24 hours ago, moves files
         if modtime > twentyfour:
             shutil.move(fullPath, destination)
